@@ -1,6 +1,8 @@
 import dotenv
-import pydantic_settings
+
 from typing import Literal, Optional
+
+import pydantic_settings
 
 EnvContext = Literal['personal', 'test', 'stage', 'prod']
 
