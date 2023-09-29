@@ -1,13 +1,8 @@
+from pydantic_settings import BaseSettings
 import dotenv
 
-from typing import Literal, Optional
 
-import pydantic_settings
-
-EnvContext = Literal['personal', 'test', 'stage', 'prod']
-
-
-class Config(pydantic_settings.BaseSettings):
+class Settings(BaseSettings):
     browserstack_username: str
     browserstack_accesskey: str
     browserstack_url: str = 'http://hub.browserstack.com/wd/hub'
@@ -21,4 +16,4 @@ class Config(pydantic_settings.BaseSettings):
     android_version: str = '12.0'
 
 
-config = Config(_env_file=dotenv.find_dotenv('.env'))
+settings = Settings(_env_file=dotenv.find_dotenv(), _env_file_encoding='utf-8')
