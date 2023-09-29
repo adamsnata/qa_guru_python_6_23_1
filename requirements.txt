@@ -1,8 +1,7 @@
-pytest~=7.4.2
-allure-pytest
+Appium-Python-Client>=3.0.0
+Selenium>=4.12.0
+pytest>=7.4.2
+allure-pytest>=2.13.2
 selene>=2.0.0rc4
-Appium-Python-Client~=3.0.0
-requests~=2.31.0
 python-dotenv~=1.0.0
-pydantic
-pydantic_settings
+pydantic-settings>=2.0.3

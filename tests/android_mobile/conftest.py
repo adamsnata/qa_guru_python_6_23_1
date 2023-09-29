@@ -2,6 +2,7 @@ import os
 
 import pytest
 from allure_commons._allure import attach
+
 from appium import webdriver
 from appium.options.android import UiAutomator2Options
 from selene import browser
