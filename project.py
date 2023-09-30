@@ -3,7 +3,7 @@ from pydantic_settings import BaseSettings
 import dotenv
 
 
-class Config(BaseSettings):
+class Settings(BaseSettings):
     browserstack_username: str
     browserstack_key: str
     browserstack_url: str = 'http://hub.browserstack.com/wd/hub'
@@ -20,4 +20,5 @@ class Config(BaseSettings):
     ios_platform: str = 'ios'
 
 
-config = Config(_env_file=dotenv.find_dotenv(), _env_file_encoding='utf-8')
+
+settings = Settings(_env_file=dotenv.find_dotenv(), _env_file_encoding='utf-8')

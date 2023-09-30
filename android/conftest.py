@@ -16,23 +16,23 @@ from utils import attach
 def android_mobile_management():
     options = UiAutomator2Options().load_capabilities({
 
-        'platformName': project.config.android_platform,
-        'platformVersion': project.config.android_version,
-        'deviceName': project.config.android_device,
+        'platformName': project.settings.android_platform,
+        'platformVersion': project.settings.android_version,
+        'deviceName': project.settings.android_device,
 
-        'app': project.config.app_url,
+        'app': project.settings.app_url,
 
         'bstack:options': {
-            'projectName': project.config.project_name,
-            'buildName': project.config.build_name,
-            'sessionName': project.config.session_name,
+            'projectName': project.settings.project_name,
+            'buildName': project.settings.build_name,
+            'sessionName': project.settings.session_name,
 
-            'userName': project.config.browserstack_username,
-            'accessKey': project.config.browserstack_key
+            'userName': project.settings.browserstack_username,
+            'accessKey': project.settings.browserstack_key
         }
     })
 
-    browser.config.driver = webdriver.Remote(project.config.browserstack_url, options=options)
+    browser.config.driver = webdriver.Remote(project.settings.browserstack_url, options=options)
 
     browser.config.timeout = float(os.getenv('timeout', '10.0'))
 
