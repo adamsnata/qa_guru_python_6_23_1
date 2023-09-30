@@ -1,13 +1,13 @@
-import os
+from time import sleep
 
 import pytest
-from allure_commons._allure import attach
+from appium.options.android import UiAutomator2Options
 
 from appium import webdriver
-from appium.options.android import UiAutomator2Options
 from selene import browser
-
+import os
 import configuration
+from utils import attach
 
 
 @pytest.fixture(scope='function', autouse=True)
