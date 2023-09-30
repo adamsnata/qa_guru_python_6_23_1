@@ -5,7 +5,7 @@ from selene import browser, support
 from appium import webdriver
 from appium.options.android import UiAutomator2Options
 
-import configuration
+import project
 from utils import attach
 
 
@@ -13,23 +13,23 @@ from utils import attach
 def android_management():
     options = UiAutomator2Options().load_capabilities({
         'platformName': 'android',
-        'platformVersion': configuration.settings.android_version,
-        'deviceName': configuration.settings.android_device,
+        'platformVersion': project.config.android_version,
+        'deviceName': project.config.android_device,
 
-        'app': configuration.settings.app_url,
+        'app': project.config.app_url,
 
         'bstack:options': {
-            'projectName': configuration.settings.project_name,
-            'buildName': configuration.settings.build_name,
-            'sessionName': configuration.settings.session_name,
+            'projectName': project.config.project_name,
+            'buildName': project.config.build_name,
+            'sessionName': project.config.session_name,
 
-            'userName': configuration.settings.browserstack_username,
-            'accessKey': configuration.settings.browserstack_key
+            'userName': project.config.browserstack_username,
+            'accessKey': project.config.browserstack_key
         }
     })
 
     with allure.step('init app session'):
-        browser.config.driver = webdriver.Remote(configuration.settings.browserstack_url, options=options)
+        browser.config.driver = webdriver.Remote(project.config.browserstack_url, options=options)
 
     browser.config._wait_decorator = support._logging.wait_with(
         context=allure_commons._allure.StepContext

@@ -6,7 +6,9 @@ from appium.options.android import UiAutomator2Options
 from appium import webdriver
 from selene import browser
 import os
-import configuration
+
+
+import project
 from utils import attach
 
 
@@ -14,23 +16,23 @@ from utils import attach
 def android_mobile_management():
     options = UiAutomator2Options().load_capabilities({
 
-        'platformName': configuration.settings.android_platform,
-        'platformVersion': configuration.settings.android_version,
-        'deviceName': configuration.settings.android_device,
+        'platformName': project.config.android_platform,
+        'platformVersion': project.config.android_version,
+        'deviceName': project.config.android_device,
 
-        'app': configuration.settings.app_url,
+        'app': project.config.app_url,
 
         'bstack:options': {
-            'projectName': configuration.settings.project_name,
-            'buildName': configuration.settings.build_name,
-            'sessionName': configuration.settings.session_name,
+            'projectName': project.config.project_name,
+            'buildName': project.config.build_name,
+            'sessionName': project.config.session_name,
 
-            'userName': configuration.settings.browserstack_username,
-            'accessKey': configuration.settings.browserstack_key
+            'userName': project.config.browserstack_username,
+            'accessKey': project.config.browserstack_key
         }
     })
 
-    browser.config.driver = webdriver.Remote(configuration.settings.browserstack_url, options=options)
+    browser.config.driver = webdriver.Remote(project.config.browserstack_url, options=options)
 
     browser.config.timeout = float(os.getenv('timeout', '10.0'))
 
