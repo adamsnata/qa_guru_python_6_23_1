@@ -19,4 +19,4 @@ class Config(pydantic_settings.BaseSettings):
     android_version: str = '12.0'
 
 
-config = Config(_env_file=dotenv.find_dotenv('.env'))
+config = Config(_env_file=dotenv.find_dotenv(), _env_file_encoding='utf-8')
