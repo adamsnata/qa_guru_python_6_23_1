@@ -13,15 +13,15 @@ from utils import attach
 def android_management():
     options = UiAutomator2Options().load_capabilities({
         'platformName': 'android',
-        'platformVersion': configuration.config.android_version,
-        'deviceName': configuration.config.android_device,
+        'platformVersion': configuration.settings.android_version,
+        'deviceName': configuration.settings.android_device,
 
-        'app': configuration.config.app_url,
+        'app': configuration.settings.app_url,
 
         'bstack:options': {
-            'projectName': configuration.config.project_name,
-            'buildName': configuration.config.build_name,
-            'sessionName': configuration.config.session_name,
+            'projectName': configuration.settings.project_name,
+            'buildName': configuration.settings.build_name,
+            'sessionName': configuration.settings.session_name,
 
             'userName': configuration.settings.browserstack_username,
             'accessKey': configuration.settings.browserstack_key
@@ -29,7 +29,7 @@ def android_management():
     })
 
     with allure.step('init app session'):
-        browser.config.driver = webdriver.Remote(configuration.config.browserstack_url, options=options)
+        browser.config.driver = webdriver.Remote(configuration.settings.browserstack_url, options=options)
 
     browser.config._wait_decorator = support._logging.wait_with(
         context=allure_commons._allure.StepContext
